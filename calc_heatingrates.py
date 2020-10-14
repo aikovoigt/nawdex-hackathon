@@ -41,10 +41,10 @@ def calc_heatingrates(ds):
     # specific heat at constant volume for dry air and water vapor
     pcd = 1004.64 - 287.04
     pcv = 1869.46 - 461.51
-    # geometric height at full levels, label='lower' for xr.diff is important for correct result
-    z_full = -1*ds['z_ifc'].diff(dim='height_ifc', n=1, label='lower').rename('pmair').rename({'height_ifc': 'height'})
+    # geometric thickness of full levels, label='lower' for xr.diff is important for correct result
+    dz_full = -1*ds['z_ifc'].diff(dim='height_ifc', n=1, label='lower').rename('dz_full').rename({'height_ifc': 'height'})
     # mass of air
-    pmair = ds['rho'] * z_full
+    pmair = ds['rho'] * dz_full
     # conversion factor for flux divergence to heating rate
     zconv = 1.0/(pmair*(pcd+(pcv-pcd)*ds['qv']))
     # calculate radiative heating rates from radiative fluxes, use "\_fromflux" to indicate that these were from fluxes
