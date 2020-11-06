@@ -1,0 +1,41 @@
+#!/bin/bash
+
+### Note: 80km and 40km have a different file structure
+
+while [ "$1" != "" ]; do
+    PARAM=`echo $1 | awk -F= '{print $1}'`
+    VALUE=`echo $1 | awk -F= '{print $2}'`
+    case $PARAM in
+        --resolution)
+            RES=$VALUE
+            ;;
+        --id)
+            NBR=$VALUE
+            ;;
+        *)
+            echo "ERROR: unknown parameter \"$PARAM\""
+            exit 1
+            ;;
+    esac
+    shift
+done
+
+EXP=nawdexnwp-${RES}km-mis-${NBR}-shcon
+echo "Working on:" $EXP
+
+cd /scratch/b/b380459/icon_4_hackathon
+mkdir ${EXP}
+cd ${EXP}
+
+#
+pftp <<ENDE
+###cd /hpss/arch/bm0834/k203095/NAWDEX/ICON_OUTPUT_NWP
+cd /hpss/arch/bm0834/k203095/NAWDEX/ICON_OUTPUT_NWP_upload-by-AikoVoigt
+prompt
+cd $EXP
+mget nawdex*
+quit
+ENDE
+#
+
+cd /work/bb1018 
