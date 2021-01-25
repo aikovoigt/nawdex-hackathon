@@ -104,3 +104,15 @@ def simdictionary():
 
     return simdict
 
+# create dictionary for the days to be analyzed depending on the start date of a simulation
+# in this way, we eliminate the first day from the analysis, and we also simulate "extra" days
+# that might be available for some but not all simulations
+def anadaysdictionary():
+    anadaysdict = {
+           '20160920': ['2016-09-21', '2016-09-22'],
+           '20160922': ['2016-09-23', '2016-09-24', '2016-09-25'],
+           '20160929': ['2016-09-30', '2016-10-01', '2016-09-02'],
+           '20161002': ['2016-10-03', '2016-10-04', '2016-09-05'],
+           '20161013': ['2016-10-14', '2016-10-15', '2016-09-16']
+                  }
+    return anadaysdict
