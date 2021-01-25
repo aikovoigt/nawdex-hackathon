@@ -23,19 +23,17 @@ done
 EXP=nawdexnwp-${RES}km-mis-${NBR}-shcon
 echo "Working on:" $EXP
 
-cd /scratch/b/b380459/icon_4_hackathon
-mkdir ${EXP}
+cd /work/bb1018/b380459/NAWDEX/ICON_OUTPUT_NWP
 cd ${EXP}
 
-#
+##
 pftp <<ENDE
-###cd /hpss/arch/bm0834/k203095/NAWDEX/ICON_OUTPUT_NWP
 cd /hpss/arch/bm0834/k203095/NAWDEX/ICON_OUTPUT_NWP_upload-by-AikoVoigt
 prompt
 cd $EXP
 mget nawdex*
 quit
 ENDE
-#
+##
 
-cd /work/bb1018 
+cd /pf/b/b380459/nawdex-hackathon/bashscripts 

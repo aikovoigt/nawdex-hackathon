@@ -23,8 +23,7 @@ done
 EXP=nawdexnwp-${RES}km-mis-${NBR}
 echo "Working on:" $EXP
 
-cd /scratch/b/b380459/icon_4_hackathon
-mkdir ${EXP}
+cd /work/bb1018/b380459/NAWDEX/ICON_OUTPUT_NWP
 cd ${EXP}
 
 ##
